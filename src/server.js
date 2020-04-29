@@ -1,10 +1,11 @@
 const express = require('express');
 
+const routes = require('./routes');
 const app = express();
 
+app.use(routes);
 
-app.listen(333, ()=> console.log("Server is running on 3333"));
 
-app.get('/', (req,res) => {
-    return res.send('HELLO WORLD');
-})
+app.listen(3333, ()=> console.log("Server is running on 3333"));
+
+
