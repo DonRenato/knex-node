@@ -51,7 +51,21 @@ module.exports = {
         } catch (error) {
             next(error);
         }
-    }
+    },
+
+    async update (req,res,next){
+        try {
+            const { title } = req.body;
+            const { id } = req.params;
+
+            await knex('projects').update({ title }).where({ id });
+
+            return res.status(201).send();
+
+        } catch (error) {
+            next(error);
+        }
+    },
 
    
 
