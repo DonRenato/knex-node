@@ -9,9 +9,11 @@ module.exports = {
 
         if(user_id){
             query
+            .where({user_id})
             .join('users', 'users.id', '=', 'projects.user_id')
             .select('projects.*', 'users.username')
-            .where({user_id})
+            .where('users.deleted_at', null)
+            
 
             counts
             .where({ user_id })
